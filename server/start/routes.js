@@ -21,6 +21,7 @@ Route.group(() => {
   Route.post('register', 'Auth/AuthenticationController.register')
   Route.post('auth', 'Auth/AuthenticationController.verifyToken')
 
+  Route.post('user/signin/:strategy', 'Auth/AuthenticationController.signin')
   Route.get('user', 'Auth/AuthenticationController.user').middleware(['auth'])
  
 }).prefix('api/v1')

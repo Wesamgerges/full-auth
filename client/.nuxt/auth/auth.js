@@ -1,7 +1,5 @@
-import getProp from 'dotprop'
-
 import Storage from './storage'
-import { routeOption, isRelativeURL, isSet, isSameURL } from './utilities'
+import { routeOption, isRelativeURL, isSet, isSameURL, getProp } from './utilities'
 
 export default class Auth {
   constructor (ctx, options) {
@@ -249,8 +247,8 @@ export default class Auth {
   }
 
   setUser (user) {
-    this.$storage.setState('loggedIn', Boolean(user))
     this.$storage.setState('user', user)
+    this.$storage.setState('loggedIn', Boolean(user))
   }
 
   // ---------------------------------------------------------------
@@ -266,6 +264,12 @@ export default class Auth {
       typeof defaults === 'object'
         ? Object.assign({}, defaults, endpoint)
         : endpoint
+
+    if (!this.ctx.app.$axios) {
+      // eslint-disable-next-line no-console
+      console.error('[AUTH] add the @nuxtjs/axios module to nuxt.config file')
+      return
+    }
 
     return this.ctx.app.$axios
       .request(_endpoint)
@@ -322,7 +326,7 @@ export default class Auth {
   callOnError (error, payload = {}) {
     this.error = error
 
-    for (let fn of this._errorListeners) {
+    for (const fn of this._errorListeners) {
       fn(error, payload)
     }
   }
@@ -389,7 +393,7 @@ export default class Auth {
     const userScopes = this.$state.user && getProp(this.$state.user, this.options.scopeKey)
 
     if (!userScopes) {
-      return undefined
+      return false
     }
 
     if (Array.isArray(userScopes)) {

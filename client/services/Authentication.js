@@ -1,6 +1,9 @@
 class Authentication {
     constructor(auth = null){
-        this.auth = auth;
+        if(auth) this.auth = auth;
+        else {
+            // this.auth = 
+        }
         this.readableMessages = {
             E_PASSWORD_MISMATCH: "Invalid email or password.",
             E_USER_NOT_FOUND: "It seems you didn't register yet.",
@@ -22,8 +25,7 @@ class Authentication {
             });
     }
 
-    async register( user  ) {
-        console.log("calling register!!")
+    async register( user  ) {       
         localStorage.removeItem("isRegister")
         try {
             await this.axios.post('/register', user)
@@ -32,16 +34,26 @@ class Authentication {
         }
     }
 
-    async setUserDataFromAuth( store, provider ) {
+    async getUser( strategy ) {
+        return {
+            email:      this.auth.user.email,
+            first_name: this.auth.user.given_name,
+            last_name:  this.auth.user.family_name,
+            token:      this.auth.getToken(strategy).substr(7)
+        }
+      
+    }
+
+    async setUserDataFromAuth( strategy ) {
         let user = {
             email:      this.auth.user.email,
             first_name: this.auth.user.given_name,
             last_name:  this.auth.user.family_name,
-            accessToken:this.auth.getToken(provider),
-            password:   this.auth.getToken(provider).substr(7, 40),
-            provider: provider
+            token:      this.auth.getToken(strategy).substr(7),
+          //  password:   this.auth.getToken(provider).substr(7),
+           // provider: provider
         }
-        store.state.user.data = user
+        // store.state.user.data = user
         return user
     }
 

@@ -22,7 +22,8 @@ import loading from '~/components/Loading.vue'
 import { mapMutations, mapGetters, mapState } from 'vuex'
 export default {
     layout: 'plain',
-    middleware: ['authenticated'],
+    auth: false,
+    // middleware: ['noauth'],// ['authenticated'],
     components: {
         login,
         loading
@@ -55,12 +56,18 @@ export default {
                     return;
                 }
             }
-            await authService.loginWith(provider, user)
+            
+            //await authService.loginWith(provider, user)
+            await this.$auth.loginWith(provider)//, { data: { provider: user.provider, user } })
+            .then(() => {
+                this.loading = false
+                console.log("done login")
+                this.$router.push('/')
+            })
             .catch( error => {
                 this.errorMessage = error
             })
-            this.loading = false
-            this.$router.push('/')
+            
         },
         ...mapMutations('user', ['setIsRegister', 'reset']),
     }

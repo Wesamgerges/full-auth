@@ -8,7 +8,7 @@ export default {
   extractCSS:   config.extractCSS,
   env:          config.env,
   server:       config.server,
-  plugins:      config.plugins,
+  //plugins:      config.plugins,
   modules:      config.modules,
   bootstrapVue: config.bootstrapVue,
   fontawesome:  config.fontawesome,

@@ -9,4 +9,5 @@
 |
 */
 module.exports =  [   
+   { src:'~plugins/auth.js', ssr: false }
 ]

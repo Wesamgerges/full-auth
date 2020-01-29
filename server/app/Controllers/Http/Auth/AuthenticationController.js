@@ -24,6 +24,23 @@ class AuthenticationController {
         }
     }
 
+    async signin({ request, ally, auth, response, params }) {
+        let { user, token } = request.only(['user', 'token'])
+        try {
+            user    = await this.verifyToken({ user, token, strategy: params.strategy, ally })
+            token   = await auth.generate( user )
+        } catch (error) {
+            response.status(401).json({
+                status: 'error',
+                message: error
+            })
+        }
+        return response.json({
+            status: 'success',
+            data: token
+        })
+    }
+
     async login({ request, ally, auth, response }) {
         let { provider, user } = request.only(['provider', 'user'])
         let accessToken =  "";
@@ -49,9 +66,9 @@ class AuthenticationController {
         }
     }
 
-    async verifyToken({ provider, user, ally } ){
+    async verifyToken({ user, token, strategy, ally } ){
         
-        const userData = await ally.driver(provider).getUserByToken(user.accessToken.substr(7))
+        const userData = await ally.driver(strategy).getUserByToken(token)
         try {
             if( userData.getEmail() !== user.email ) {
                 throw "E_USER_NOT_FOUND"

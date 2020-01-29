@@ -10,7 +10,7 @@
 |
 */
 module.exports = {
-        // plugins: ['~/plugins/auth.js'],
+        plugins: ['~/plugins/auth.js'],
         cookie: false,
         scopeKey: 'role',
         strategies: {
@@ -19,7 +19,9 @@ module.exports = {
                 login:  { url: 'login', method: 'post', propertyName: 'data.token'  },
                 user:   { url: 'user' , method: 'get' , propertyName: 'data'        },
                 logout: false
-            }
+            },
+            tokenRequired: true,
+            tokenType: 'Bearer'
         },
         facebook: {
             client_id: process.env.FB_CLIENT_ID,

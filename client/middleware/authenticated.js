@@ -1,8 +1,11 @@
+/**
+
 import authService from '~/services/Authentication.js'
 
 export default async function ({ app, redirect, store }) {
     authService.setContext(app) 
     const provider = app.$auth.strategy.name   
+    console.log("calling middleware!!!")
     if (app.$auth.loggedIn) {
         if (!Array.isArray(app.$auth.user.role)){
             app.$auth.user.role = [app.$auth.user.role];
@@ -31,3 +34,5 @@ export default async function ({ app, redirect, store }) {
         return redirect('/')
     }
 }
+
+*/
