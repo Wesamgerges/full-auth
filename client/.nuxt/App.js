@@ -9,23 +9,13 @@ import {
 import NuxtLoading from './components/nuxt-loading.vue'
 import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
-import '../node_modules/@fortawesome/fontawesome-svg-core/styles.css'
-
-import '../node_modules/bootstrap/dist/css/bootstrap.css'
-
-import '../node_modules/bootstrap-vue/dist/bootstrap-vue.css'
-
-import '../assets/bootstrap-social.css'
-
-import '../assets/styles.css'
-
 import _6f6c098b from '../layouts/default.vue'
 import _77dd5794 from '../layouts/plain.vue'
 
 const layouts = { "_default": _6f6c098b,"_plain": _77dd5794 }
 
 export default {
-  head: {"title":"client","meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"hid":"description","name":"description","content":"Full Auth"}],"link":[{"rel":"icon","type":"image\u002Fx-icon","href":"\u002Ffavicon.ico"}],"style":[],"script":[]},
+  head: {"meta":[],"link":[],"style":[],"script":[]},
 
   render (h, props) {
     const loadingEl = h('NuxtLoading', { ref: 'loading' })

@@ -1,4 +1,3 @@
-'use strict'
 /*
 |--------------------------------------------------------------------------
 | Modules Configuration
@@ -14,5 +13,5 @@ module.exports =  [
     '@nuxtjs/axios',
     '@nuxtjs/auth', 
     'nuxt-fontawesome',
-    ['@nuxtjs/dotenv', { /* module options */ }],
+    '@nuxtjs/dotenv',
 ]

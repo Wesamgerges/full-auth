@@ -1,4 +1,4 @@
-require('dotenv').config()
+console.log(process.env.API_BASE_URL)
 
 import { mode, env, server, head, extractCSS } from './app.js'
 import modules from './modules.js'
@@ -14,9 +14,10 @@ import css from './css.js'
 // import plugins from './plugins.js'
 console.log(auth)
 export default {
+    modules,
     mode,
     build,
-    modules,
+    
     auth,
     router,
     //plugins,

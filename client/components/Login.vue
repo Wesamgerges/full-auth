@@ -27,9 +27,9 @@
                     </div>
                     <hr class="hr-text" data-content="OR">
                     <div class="form-group pb-2">   
-                        <button class="btn btn-social btn-google form-control form-control-lg text-center" @click.prevent="login('google')">
+                        <a class="btn btn-social btn-google form-control form-control-lg text-center" :href="serverUrl+'/login/google'">
                             <font-awesome-icon :icon="['fab', 'google']"/> {{ label}} with Google
-                        </button>                                            
+                        </a>                                            
                     </div>
                     <div class="form-group">                       
                         <button class="btn btn-social btn-facebook form-control form-control-lg text-center" @click.prevent="login('facebook')">
@@ -58,6 +58,10 @@ export default {
         }
     },
     computed: {
+         serverUrl() {
+             console.log(process.env.API_BASE_URL)
+            return process.env.serverUrl;
+        },
         ...mapState('user', { user: 'data' })
     },
     watch: {

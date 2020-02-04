@@ -35,10 +35,6 @@ export const routerOptions = {
     path: "/",
     component: _3dbdf184,
     name: "index"
-  }, {
-    path: "/login",
-    component: _32da0700,
-    name: "login"
   }],
 
   fallback: false

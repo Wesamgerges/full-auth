@@ -21,11 +21,11 @@
     "bootstrap-vue": "^2.0.0",
     "nuxt": "^2.8.1",
     "nuxt-fontawesome": "^0.4.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/vuetify": "^1.8.3"
   },
   "devDependencies": {
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/vuetify": "^1.8.3",
     "nodemon": "^1.18.9",
     "sass": "^1.17.4",
     "sass-loader": "^7.1.0",

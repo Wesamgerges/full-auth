@@ -1,5 +1,3 @@
-'use strict'
-
 /*
 |--------------------------------------------------------------------------
 | App Configuration
@@ -10,17 +8,18 @@
 |
 |
 */
-
+console.log(process.env.SERVER_URL)
 module.exports = {
     mode: 'spa',
     env: {
-        baseUrl: process.env.HOST,
-        apiBaseUrl: process.env.API_BASE_URL,
+        baseUrl: process.env.BASE_URL,
+        apiBaseUrl: process.env.SERVER_URL + "/api/v1",
+        serverUrl: process.env.SERVER_URL
     },    
    
     server: {
-        // port: 8000, // default: 3000
-        // host: '0.0.0.0' // default: localhost
+        // port: process.env.PORT, // default: 3000
+        // host: process.env.HOST// default: localhost
     },
 
     /*

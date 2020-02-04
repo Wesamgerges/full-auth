@@ -26,6 +26,10 @@ Route.group(() => {
  
 }).prefix('api/v1')
 
+Route.get('login/google', 'Auth/LoginController.redirect')
+Route.get('auth/google/callback', 'Auth/LoginController.callback')
+
 Route.get('/', () => {
   return { greeting: 'Hello From Full Auth' }
 })
+

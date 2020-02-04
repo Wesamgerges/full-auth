@@ -1,6 +1,8 @@
-import config from './config/config.js'
+require('dotenv').config()
+var config = require('./config/config.js')
 
 export default {
+  modules:      config.modules,
   mode:         config.mode,
   head:         config.head,
   loading:      config.loading,
@@ -9,7 +11,6 @@ export default {
   env:          config.env,
   server:       config.server,
   //plugins:      config.plugins,
-  modules:      config.modules,
   bootstrapVue: config.bootstrapVue,
   fontawesome:  config.fontawesome,
   axios:        config.axios,

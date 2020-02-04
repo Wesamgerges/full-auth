@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-
-    <div v-if="$auth.hasScope('admin')">
+$auth.hasScope('admin')
+    <div v-if="1">
       <h1 > Admin area </h1>
       <div>
         <h1 class="title"> Full Auth </h1>
@@ -19,6 +19,7 @@
 <script>
 
 export default {
+   auth: false,
   methods: {
     async logout() {
       await this.$auth.logout()

@@ -133,7 +133,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {"apiBaseUrl":"http://localhost:3333/api/v1","API_BASE_URL":"http://localhost:3333/api/v1","FB_CLIENT_ID":"648458352266301","FB_CLIENT_SECRET":"1dd7beebd621fbb2e97347ac5ebcfa3a","GOOGLE_CLIENT_ID":"1067701340140-r3s0nd8u4t963s0vuib198vr18fd1otr.apps.googleusercontent.com"}
+      env: {}
     }
     // Only set once
     if (context.req) {
